@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.59% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>25/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">72.22% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>13/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -85,50 +85,62 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useCallback } from 'react'
-import queryString from 'query-string'
-&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _defineProperty from "@babel/runtime/helpers/defineProperty";
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly &amp;&amp; (symbols = symbols.filter(<span class="fstat-no" title="function not covered" >fu</span>nction (sym) { <span class="cstat-no" title="statement not covered" >return Object.getOwnPropertyDescriptor(object, sym).enumerable; </span>})), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i &lt; arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : <span class="branch-1 cbranch-no" title="branch not covered" >{};</span> i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : <span class="branch-1 cbranch-no" title="branch not covered" >Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(<span class="fstat-no" title="function not covered" >fu</span>nction (key) { <span class="cstat-no" title="statement not covered" >Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); </span>});</span> } return target; }
+import { useCallback } from 'react';
+import queryString from 'query-string';
 export function useSearch() {
-  const searchList = [] // 同一组件连续调用的缓冲区
+  var searchList = []; // 同一组件连续调用的缓冲区
 &nbsp;
-  const getSearch = useCallback(() =&gt; queryString.parse(window.location.search), [ window.location.search ])
-&nbsp;
-  const setSearch = useCallback((key, value = null) =&gt; {
-    const search = getSearch()
-&nbsp;
-    if (search[key] === `${value}` || typeof key !=='string') return
-&nbsp;
-    searchList.push({ [key]: value })
-&nbsp;
-    const nextSearchData = { ...search, ...searchList.reduce((before, current) =&gt; ({ ...before, ...current }), {}) }
-    const nextSearch = queryString.stringify(nextSearchData, { skipNull: true })
-&nbsp;
-    window.history.replaceState(queryString.parse(nextSearch), '', `?${nextSearch}`)
-  }, [ getSearch, window.history ])
-&nbsp;
-  return { getSearch, setSearch }
+  var getSearch = useCallback(() =&gt; queryString.parse(window.location.search), [window.location.search]);
+  var setSearch = useCallback(function (key) {
+    var value = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : null;
+    var search = getSearch();
+    if (search[key] === "".concat(value) || typeof key !== 'string') return;
+    searchList.push({
+      [key]: value
+    });
+    var nextSearchData = _objectSpread(_objectSpread({}, search), searchList.reduce((before, current) =&gt; _objectSpread(_objectSpread({}, before), current), {}));
+    var nextSearch = queryString.stringify(nextSearchData, {
+      skipNull: true
+    });
+    window.history.replaceState(queryString.parse(nextSearch), '', "?".concat(nextSearch));
+  }, [getSearch, window.history]);
+  return {
+    getSearch,
+    setSearch
+  };
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -136,7 +148,7 @@ export function useSearch() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-14T14:53:36.405Z
+                at 2023-04-14T15:03:30.589Z
             </div>
         <script src="prettify.js"></script>
         <script>
