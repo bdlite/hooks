@@ -13,26 +13,26 @@ Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.c
 
 - 克隆到本地
 
-    `
+```javascript
     git clone https://github.com/bdlite/hooks.git
-    `
+```
 
 - 安装
 
-    `
+```javascript
     yarn install
-    `
+```
 
-- 开始单元测试
+## 开始单元测试
 
-    - 可以直接 run (指向的是es目录)
+- 可以直接 run
 
-        `
-        npm run test
-        `
+```javascript
+    npm run test
+```
 
-    - 也可以模拟发布前
+- 也可以模拟发布前
 
-        `
-        npm run prepublishOnly
-        `
+```javascript
+    npm run prepublishOnly
+```
