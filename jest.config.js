@@ -26,9 +26,9 @@ module.exports = {
       '^.+\\.tsx$': 'ts-jest',
       '^.+\\.jsx?$': 'babel-jest',
     },
-    // transformIgnorePatterns: ['/node_modules/'],
-    // testPathIgnorePatterns: ['<rootDir>/es/'],
-    // transformIgnorePatterns: ['<rootDir>/es','/node_modules/(?!(query-string|react)/)'],
+    // transformIgnorePatterns: [
+    //   '/node_modules/(?!query-string)/'
+    // ],
     // globals: { // 指定在测试期间要使用的全局变量
     //   'window': true,
     // },
