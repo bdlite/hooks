@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.59% </span>
+                <span class="strong">93.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/27</span>
+                <span class='fraction'>29/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.22% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/18</span>
+                <span class='fraction'>16/22</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -89,9 +89,13 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,14 +106,18 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,23 +127,27 @@
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly &amp;&amp; (symbols = symbols.filter(<span class="fstat-no" title="function not covered" >fu</span>nction (sym) { <span class="cstat-no" title="statement not covered" >return Object.getOwnPropertyDescriptor(object, sym).enumerable; </span>})), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i &lt; arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : <span class="branch-1 cbranch-no" title="branch not covered" >{};</span> i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : <span class="branch-1 cbranch-no" title="branch not covered" >Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(<span class="fstat-no" title="function not covered" >fu</span>nction (key) { <span class="cstat-no" title="statement not covered" >Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); </span>});</span> } return target; }
 import { useCallback } from 'react';
-import queryString from 'query-string';
+import { parse, stringify } from 'query-string';
 export function useSearch() {
   var searchList = []; // 同一组件连续调用的缓冲区
 &nbsp;
-  var getSearch = useCallback(() =&gt; queryString.parse(window.location.search), [window.location.search]);
+  var getSearch = useCallback(() =&gt; parse(window.location.search), [window.location.search]);
   var setSearch = useCallback(function (key) {
     var value = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : null;
+    var val = "".concat(value);
     var search = getSearch();
-    if (search[key] === "".concat(value) || typeof key !== 'string') return;
+    if (search[key] === val) return;
+    if (typeof key !== 'string' || value === null) return;
     searchList.push({
-      [key]: value
+      [key]: val
     });
     var nextSearchData = _objectSpread(_objectSpread({}, search), searchList.reduce((before, current) =&gt; _objectSpread(_objectSpread({}, before), current), {}));
-    var nextSearch = queryString.stringify(nextSearchData, {
+    var nextSearch = stringify(nextSearchData, {
       skipNull: true
     });
-    window.history.replaceState(queryString.parse(nextSearch), '', "?".concat(nextSearch));
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (nextSearch) {
+      window.history.replaceState(parse(nextSearch), '', "?".concat(nextSearch));
+    }
   }, [getSearch, window.history]);
   return {
     getSearch,
@@ -148,7 +160,7 @@ export function useSearch() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-14T15:03:30.589Z
+                at 2023-04-17T05:04:25.590Z
             </div>
         <script src="prettify.js"></script>
         <script>

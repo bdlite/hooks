@@ -1,22 +1,27 @@
 import { useCallback } from 'react'
-import queryString from 'query-string'
+import { parse, stringify } from 'query-string'
 
 export function useSearch() {
   const searchList = [] // 同一组件连续调用的缓冲区
 
-  const getSearch = useCallback(() => queryString.parse(window.location.search), [ window.location.search ])
+  const getSearch = useCallback(() => parse(window.location.search), [ window.location.search ])
 
   const setSearch = useCallback((key, value = null) => {
+    const val = `${value}`
     const search = getSearch()
 
-    if (search[key] === `${value}` || typeof key !=='string') return
+    if (search[key] === val) return
 
-    searchList.push({ [key]: value })
+    if (typeof key !=='string' || value === null) return
+
+    searchList.push({ [key]: val })
 
     const nextSearchData = { ...search, ...searchList.reduce((before, current) => ({ ...before, ...current }), {}) }
-    const nextSearch = queryString.stringify(nextSearchData, { skipNull: true })
+    const nextSearch = stringify(nextSearchData, { skipNull: true })
 
-    window.history.replaceState(queryString.parse(nextSearch), '', `?${nextSearch}`)
+    if (nextSearch) {
+      window.history.replaceState(parse(nextSearch), '', `?${nextSearch}`)
+    }
   }, [ getSearch, window.history ])
 
   return { getSearch, setSearch }
