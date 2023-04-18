@@ -14,7 +14,7 @@ Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.c
 - 克隆到本地
 
 ```javascript
-    git clone https://github.com/bdlite/hooks.git
+    git clone --branch preview/previous https://github.com/bdlite/hooks.git
 ```
 
 - 安装
