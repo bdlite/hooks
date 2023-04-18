@@ -7,6 +7,7 @@
     "es",
     "__tests__",
     "jest.config.js",
+    "LICENSE",
     "README.md"
   ],
   "scripts": {
