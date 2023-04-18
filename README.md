@@ -6,10 +6,16 @@ Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.c
 
 当然不联系也能用 : )
 
-协议开放
+> 协议开放
+
+## 使用
+
+```javascript
+    npm i --save @bdlite/hooks
+```
 
 
-## 安装步骤
+## 本地调试
 
 - 克隆到本地
 
