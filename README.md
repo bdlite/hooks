@@ -2,11 +2,7 @@
 
 > react hooks by bdlite group
 
-Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.com
-
-当然不联系也能用 : )
-
-协议开放
+Bdlite团队自用hooks，源码比较旧，本分支是为借助Cursor写单测用
 
 
 ## 安装步骤
@@ -23,7 +19,11 @@ Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.c
     yarn install
 ```
 
-## 开始单元测试
+## 配置和写单测
+
+[从搭建Jest开始，让AI帮我写单元测试](https://juejin.cn/post/7223208392771452985)
+
+## 跑用例
 
 - 可以直接 run
 
