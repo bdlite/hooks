@@ -8,12 +8,13 @@
     "__tests__",
     "setup.js",
     "jest.config.js",
+    "LICENSE",
     "README.md"
   ],
   "scripts": {
     "build": "cross-env BABEL_ENV=es babel src -d es",
     "prepublishOnly": "npm run build && npm run test",
-    "test": "cross-env BABEL_ENV=test babel __tests -d __tests__ && jest --coverage --colors --config jest.config.js"
+    "test": "npm run build && jest --coverage --colors --config jest.config.js"
   },
   "repository": {
     "type": "git",
