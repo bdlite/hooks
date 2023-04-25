@@ -22,7 +22,7 @@ setSearch 是一个函数，用于设置 URL 中的查询参数。它接受两�
 ## 示例
 
 ```js
-import { useSearch } from './useSearch'
+import { useSearch } from '@bdlite/hooks/es/useSearch'
 
 function MyComponent() {
   const { getSearch, setSearch } = useSearch()
