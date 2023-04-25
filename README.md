@@ -14,6 +14,10 @@ Bdlite团队自用hooks，有想用的小伙伴欢迎联系我们 yexinxie@163.c
     npm i --save @bdlite/hooks
 ```
 
+## API文档
+
+- [useSearch](./doc/useSearch.md)
+
 
 ## 本地调试
 
